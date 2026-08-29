@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm)",
+      "Read(//c/Users/chris/OneDrive/Documents/Eleanor/**)",
+      "Bash(npx create-next-app@latest eleanor-website --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(cp -r eleanor-website/* \"Website/\")",
+      "Bash(cp eleanor-website/.gitignore \"Website/\")",
+      "Bash(cp eleanor-website/.eslintrc.json \"Website/\")",
+      "Bash(cp -r eleanor-website/.git_temp)",
+      "Bash(cd:*)",
+      "Bash(npx next:*)"
+    ]
+  }
+}
