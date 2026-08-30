@@ -1,5 +1,154 @@
 @import "tailwindcss";
 
+/*
+ * Values below are measured from the live Wix site at a 1920px viewport and
+ * expressed as vw, which is how Wix itself scales (its --scaling-factor is the
+ * raw viewport width, with no clamp). Wix's breakpoint is max-width: 1023px.
+ */
+:root {
+  --base-1: #fffef2; /* cream — page background */
+  --base-2: #5260e0; /* indigo — primary text and the About band */
+  --accent-1: #141414; /* near-black — header wordmark */
+  --footer-fg: #f5f5f5;
+
+  /* Arimo stops at 700, so the display type is thickened optically. Stroke is
+     painted under the fill, growing glyphs outward without closing counters,
+     and it does not alter advance widths — layout stays pixel-identical.
+     Raise for heavier, set to 0 to return to plain Arimo Bold. */
+  --display-bolden: 0em;
+
+  --font-display: var(--font-neue-haas), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: var(--font-geist-sans), sans-serif;
+  background: var(--base-1);
+  color: var(--base-2);
+  font-family: var(--font-display);
+}
+
+/* ---------- shared type ---------- */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.9em;
+  text-transform: uppercase;
+}
+.wordmark em {
+  font-style: italic;
+}
+
+/* Tailwind's preflight resets heading weight to inherit, so set it explicitly.
+   Both of these are 700 on the Wix site. */
+.hero-title,
+.works-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.wordmark,
+.hero-title,
+.works-title {
+  -webkit-text-stroke: var(--display-bolden) currentColor;
+  paint-order: stroke fill;
+}
+
+/* The indigo band behind About. It stops at the bottom edge of the headshot
+   rather than running the full height of the section: the photo sits at
+   top -1.35vw with height 57.29vw, so its lower edge is 55.94vw down. The
+   section keeps Wix's full 60.05vw, leaving a cream gap before Works. */
+.about-band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--base-2);
+}
+
+/* About block: bold label over light body copy. */
+.about-copy {
+  font-weight: 300;
+}
+
+.about-label {
+  font-weight: 700;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  line-height: 1.1em;
+}
+
+/* ---------- desktop: mirror Wix's absolute geometry ---------- */
+@media screen and (min-width: 1024px) {
+  /* Wix measured the wordmark at y=50, but 34px of that was its own promo
+     banner — the real inset is 16px (0.83vw), matching the 0.81vw left inset. */
+  .site-header { height: 5.99vw; }
+  .site-header .wordmark { font-size: 1.569vw; margin: 0.83vw 0 0 0.81vw; }
+  .site-nav { gap: 3.7vw; padding-right: 2.6vw; font-size: 1.24vw; }
+
+  .hero { height: 59.64vw; }
+  .hero-img { left: 24.41vw; top: 3.28vw; width: 72.29vw; height: 53.49vw; }
+  .hero-title { left: 0.83vw; top: 12.19vw; width: 24.07vw; font-size: 4.031vw; line-height: 0.9em; }
+  .hero-quote { left: 0.78vw; top: 44.01vw; width: 22.4vw; font-size: 1.395vw; }
+
+  .about { height: 60.05vw; }
+  .about-band { height: 55.94vw; } /* ends flush with the headshot */
+  /* Flush to the page edge. Wix measured x=1px (0.05vw), which left a hairline
+     of indigo; the width absorbs that 0.05vw so the right edge is unmoved. */
+  .about-img { left: 0; top: -1.35vw; width: 36.72vw; height: 57.29vw; }
+  .about-copy { left: 50.6vw; top: 16.56vw; width: 34.84vw; font-size: 1.41vw; line-height: 1em; }
+  .about-copy .spacer { height: 4.68vw; }
+
+  .works { height: 45.94vw; display: flow-root; } /* flow-root stops the title margin collapsing out */
+  .works-title { margin: 0.99vw 0 0 0.77vw; font-size: 3.573vw; line-height: 1em; }
+  .works-row { top: 19.43vw; left: 0.83vw; width: 97.5vw; gap: 0.88vw; }
+  .works-row figcaption { margin-top: 1.4vw; padding-left: 0.69vw; font-size: 1.24vw; }
+
+  .showcase { height: 49.84vw; }
+
+  .site-footer { height: 12.24vw; }
+  .site-footer .wordmark { left: 0.81vw; top: 0.89vw; font-size: 2.51vw; }
+  .footer-contact { left: 25.98vw; top: 3.54vw; font-size: 1.24vw; }
+}
+
+/* ---------- mobile: Wix's <=1023px type scale, stacked ---------- */
+@media screen and (max-width: 1023px) {
+  .site-header { padding: 5vw 6.15vw; }
+  .site-header .wordmark { font-size: 4.6vw; }
+  .site-nav { gap: 5vw; font-size: 3.6vw; }
+
+  .hero-title { font-size: 7.179vw; line-height: 0.9em; }
+  .hero-quote { font-size: 4.103vw; }
+  .about-band { height: 100%; }
+  .about-copy { font-size: 4.103vw; line-height: 1.15em; }
+  .about-copy .spacer { height: 4vw; }
+  .works-title { font-size: 6.667vw; line-height: 1em; }
+  .works-row figcaption { margin-top: 3vw; font-size: 4.103vw; }
+  .site-footer .wordmark { font-size: 7.179vw; }
+  .footer-contact { font-size: 4.103vw; }
+}
+
+/* ---------- Wix's entrance motion: fadeIn 1400ms + 6px blurIn ---------- */
+@keyframes reveal {
+  from { opacity: 0; filter: blur(6px); }
+  to { opacity: 1; filter: blur(0); }
+}
+.reveal { opacity: 0; }
+.reveal[data-revealed="true"] {
+  animation: reveal 1400ms cubic-bezier(0.47, 0, 0.745, 0.715) backwards 1;
+  opacity: 1;
+}
+
+/* If JS never runs, nothing should stay invisible. */
+.no-js .reveal { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal[data-revealed="true"] { opacity: 1; animation: none; }
 }
