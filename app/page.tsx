@@ -129,7 +129,7 @@ export default function Home() {
       {/* ---------- Contact / footer ---------- */}
       <footer
         id="contact"
-        className="site-footer relative scroll-mt-[var(--header-h)] overflow-hidden bg-[var(--base-2)] max-lg:px-[6.15vw] max-lg:py-[10vw]"
+        className="site-footer relative scroll-mt-[var(--header-h)] overflow-hidden bg-[var(--base-2)] max-lg:px-[6.15vw] max-lg:py-[calc(10*var(--m))]"
       >
         {/* Wix tints the white paper scan to the indigo ground; multiply reproduces it. */}
         <Image
@@ -149,7 +149,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="footer-contact mono relative text-[var(--base-1)] lg:absolute max-lg:mt-[6vw]">
+        <div className="footer-contact mono relative text-[var(--base-1)] lg:absolute max-lg:mt-[calc(6*var(--m))]">
           <address className="not-italic">
             <a href="mailto:e.cousinsbrown@gmail.com" className="block hover:opacity-70">
               e.cousinsbrown@gmail.com
