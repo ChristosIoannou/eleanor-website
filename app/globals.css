@@ -124,29 +124,45 @@ body {
 
 /* ---------- mobile: Wix's <=1023px type scale, stacked ---------- */
 @media screen and (max-width: 1023px) {
-  :root { --header-h: 22.42vw; }
+  /*
+   * Wix's mobile scale is raw vw, tuned to read correctly on a phone. With no
+   * ceiling it keeps growing to 1023px, where the wordmark hit 47px against
+   * the 16px the desktop scale takes over at one pixel later — so a
+   * split-screen window got type nearly 3x larger than a full monitor.
+   *
+   * --m is 1vw up to 430px (a large phone) and then holds. Below that the
+   * numbers below are identical to plain vw, so phones are untouched; above
+   * it the type stops growing and meets the desktop scale roughly level.
+   * Multipliers are the old vw figures, so they still read as Wix's values.
+   */
+  :root {
+    --m: min(1vw, 4.3px);
+    --header-h: calc(22.42 * var(--m));
+  }
 
   /* The header is fixed, so it sits over the top of the page. Desktop wants
      that — Wix runs the nav across the billboard — but the stacked layout
      starts with the image flush to the top, so push the flow clear of it. */
   main { padding-top: var(--header-h); }
 
-  .site-header { padding: 5vw 6.15vw; }
-  .site-header .wordmark { font-size: 4.6vw; }
-  .site-nav { gap: 5vw; font-size: 3.6vw; }
+  /* Vertical padding is capped with the type so --header-h stays exact:
+     2 x 5 + 3 lines x 0.9 x 4.6 = 22.42. Side padding tracks the viewport. */
+  .site-header { padding: calc(5 * var(--m)) 6.15vw; }
+  .site-header .wordmark { font-size: calc(4.6 * var(--m)); }
+  .site-nav { gap: calc(5 * var(--m)); font-size: calc(3.6 * var(--m)); }
 
-  .hero-title { font-size: 7.179vw; line-height: 0.9em; }
-  .hero-quote { font-size: 4.103vw; }
+  .hero-title { font-size: calc(7.179 * var(--m)); line-height: 0.9em; }
+  .hero-quote { font-size: calc(4.103 * var(--m)); }
   .about-band { height: 100%; }
-  .about-copy { font-size: 4.103vw; line-height: 1.15em; }
-  .about-copy .spacer { height: 4vw; }
-  .works-title { font-size: 6.667vw; line-height: 1em; }
-  .works-row figcaption { margin-top: 3vw; font-size: 4.103vw; }
+  .about-copy { font-size: calc(4.103 * var(--m)); line-height: 1.15em; }
+  .about-copy .spacer { height: calc(4 * var(--m)); }
+  .works-title { font-size: calc(6.667 * var(--m)); line-height: 1em; }
+  .works-row figcaption { margin-top: calc(3 * var(--m)); font-size: calc(4.103 * var(--m)); }
   /* 70.25% of the Works title, the footer-to-title ratio desktop uses
      (2.51vw / 3.573vw). Copying the hero title's 7.179vw made the all-caps
      wordmark the loudest type on the page. */
-  .site-footer .wordmark { font-size: 4.68vw; }
-  .footer-contact { font-size: 4.103vw; }
+  .site-footer .wordmark { font-size: calc(4.68 * var(--m)); }
+  .footer-contact { font-size: calc(4.103 * var(--m)); }
 }
 
 /* ---------- Wix's entrance motion: fadeIn 1400ms + 6px blurIn ---------- */
