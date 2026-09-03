@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    Curly-tailed lizard, top-down, flat fill in the site indigo.
+    Built from overlapping primitives that merge into one silhouette; limbs
+    and tail are round-capped strokes so the taper survives at 16px.
+  -->
+  <g transform="translate(0 3)" fill="#5260e0" stroke="#5260e0"
+     stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- limbs: shoulder out to elbow, then foot forward -->
+    <g fill="none" stroke-width="5">
+      <path d="M27.5 19 18 14 12 19"/>
+      <path d="M36.5 19 46 14 52 19"/>
+      <path d="M27.5 31 17 35 12 30"/>
+      <path d="M36.5 31 47 35 52 30"/>
+    </g>
+
+    <!-- tail: four segments of decreasing width, spiralling inward -->
+    <g fill="none">
+      <path d="M32 32C32 39 32 44 36 47" stroke-width="6.5"/>
+      <path d="M36 47C41 51 48 49 48 43" stroke-width="5"/>
+      <path d="M48 43C48 38 43 36.5 40 39" stroke-width="3.5"/>
+      <path d="M40 39C38 41 38.5 43.5 40.5 44" stroke-width="2.2"/>
+    </g>
+
+    <!-- body, head, snout -->
+    <ellipse cx="32" cy="23" rx="7" ry="11"/>
+    <ellipse cx="32" cy="10" rx="5.5" ry="6.5"/>
+    <ellipse cx="32" cy="6" rx="3.5" ry="4"/>
+  </g>
+</svg>
