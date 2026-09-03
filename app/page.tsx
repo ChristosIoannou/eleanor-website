@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main>
       {/* ---------- Hero ---------- */}
-      <section className="hero relative max-lg:px-[6.15vw] max-lg:py-[8vw]">
+      <section className="hero relative max-lg:px-[6.15vw] max-lg:pb-[8vw]">
         <Reveal className="hero-img lg:absolute max-lg:mb-[8vw]">
           <Image
             src={billboard}
