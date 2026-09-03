@@ -126,6 +126,11 @@ body {
 @media screen and (max-width: 1023px) {
   :root { --header-h: 22.42vw; }
 
+  /* The header is fixed, so it sits over the top of the page. Desktop wants
+     that — Wix runs the nav across the billboard — but the stacked layout
+     starts with the image flush to the top, so push the flow clear of it. */
+  main { padding-top: var(--header-h); }
+
   .site-header { padding: 5vw 6.15vw; }
   .site-header .wordmark { font-size: 4.6vw; }
   .site-nav { gap: 5vw; font-size: 3.6vw; }
