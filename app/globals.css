@@ -17,6 +17,11 @@
      Raise for heavier, set to 0 to return to plain Arimo Bold. */
   --display-bolden: 0em;
 
+  /* Height of the fixed header, so #about/#works/#contact can offset their
+     scroll target by exactly it. Desktop matches .site-header's 5.99vw; the
+     mobile value is 5vw padding x2 plus three wordmark lines at 4.6vw x 0.9. */
+  --header-h: 5.99vw;
+
   --font-display: var(--font-neue-haas), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
 }
@@ -119,6 +124,8 @@ body {
 
 /* ---------- mobile: Wix's <=1023px type scale, stacked ---------- */
 @media screen and (max-width: 1023px) {
+  :root { --header-h: 22.42vw; }
+
   .site-header { padding: 5vw 6.15vw; }
   .site-header .wordmark { font-size: 4.6vw; }
   .site-nav { gap: 5vw; font-size: 3.6vw; }

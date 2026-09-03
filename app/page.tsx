@@ -50,7 +50,7 @@ export default function Home() {
       {/* ---------- About ---------- */}
       <section
         id="about"
-        className="about relative scroll-mt-[6vw] overflow-hidden max-lg:pb-[12vw]"
+        className="about relative scroll-mt-[var(--header-h)] overflow-hidden max-lg:pb-[12vw]"
       >
         <div className="about-band" aria-hidden />
 
@@ -86,7 +86,7 @@ export default function Home() {
       {/* ---------- Works ---------- */}
       <section
         id="works"
-        className="works relative scroll-mt-[6vw] max-lg:px-[6.15vw] max-lg:py-[12vw]"
+        className="works relative scroll-mt-[var(--header-h)] max-lg:px-[6.15vw] max-lg:py-[12vw]"
       >
         <Reveal>
           <h2 className="works-title">Works</h2>
@@ -129,7 +129,7 @@ export default function Home() {
       {/* ---------- Contact / footer ---------- */}
       <footer
         id="contact"
-        className="site-footer relative scroll-mt-[6vw] overflow-hidden bg-[var(--base-2)] max-lg:px-[6.15vw] max-lg:py-[10vw]"
+        className="site-footer relative scroll-mt-[var(--header-h)] overflow-hidden bg-[var(--base-2)] max-lg:px-[6.15vw] max-lg:py-[10vw]"
       >
         {/* Wix tints the white paper scan to the indigo ground; multiply reproduces it. */}
         <Image
