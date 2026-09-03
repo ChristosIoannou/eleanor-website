@@ -141,15 +141,15 @@ export default function Home() {
           className="object-cover mix-blend-multiply"
         />
 
-        <Reveal className="wordmark relative text-[var(--footer-fg)] lg:absolute">
+        <div className="wordmark relative text-[var(--footer-fg)] lg:absolute">
           <p>
             <em>Eleanor</em>
             <br /> Cousins
             <br /> Brown
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal className="footer-contact mono relative text-[var(--base-1)] lg:absolute max-lg:mt-[6vw]">
+        <div className="footer-contact mono relative text-[var(--base-1)] lg:absolute max-lg:mt-[6vw]">
           <address className="not-italic">
             <a href="mailto:e.cousinsbrown@gmail.com" className="block hover:opacity-70">
               e.cousinsbrown@gmail.com
@@ -163,7 +163,7 @@ export default function Home() {
               @_eleanorcb_
             </a>
           </address>
-        </Reveal>
+        </div>
       </footer>
     </main>
   );
