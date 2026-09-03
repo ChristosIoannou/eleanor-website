@@ -54,7 +54,7 @@ export default function Home() {
       >
         <div className="about-band" aria-hidden />
 
-        <Reveal className="about-img lg:absolute">
+        <Reveal className="about-img relative lg:absolute">
           <Image
             src={headshot}
             alt="Eleanor Cousins Brown"
@@ -64,7 +64,7 @@ export default function Home() {
           />
         </Reveal>
 
-        <Reveal className="about-copy text-center text-[var(--base-1)] lg:absolute max-lg:px-[6.15vw] max-lg:pt-[10vw]">
+        <Reveal className="about-copy relative text-center text-[var(--base-1)] lg:absolute max-lg:px-[6.15vw] max-lg:pt-[10vw]">
           <p className="about-label">About</p>
           <div className="spacer" aria-hidden />
           <p>
