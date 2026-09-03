@@ -142,7 +142,10 @@ body {
   .about-copy .spacer { height: 4vw; }
   .works-title { font-size: 6.667vw; line-height: 1em; }
   .works-row figcaption { margin-top: 3vw; font-size: 4.103vw; }
-  .site-footer .wordmark { font-size: 7.179vw; }
+  /* 70.25% of the Works title, the footer-to-title ratio desktop uses
+     (2.51vw / 3.573vw). Copying the hero title's 7.179vw made the all-caps
+     wordmark the loudest type on the page. */
+  .site-footer .wordmark { font-size: 4.68vw; }
   .footer-contact { font-size: 4.103vw; }
 }
 
